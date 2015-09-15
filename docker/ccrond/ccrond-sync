@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e # exit on error
+
+crontab=`ccron crontab`
+echo $crontab | crontab -u ccrond -
+

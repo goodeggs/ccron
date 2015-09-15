@@ -1,0 +1,18 @@
+{
+	"ImportPath": "github.com/goodeggs/ccron/ccron",
+	"GoVersion": "go1.5",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/codegangsta/cli",
+			"Comment": "1.2.0-143-ga65b733",
+			"Rev": "a65b733b303f0055f8d324d805f393cd3e7a7904"
+		},
+		{
+			"ImportPath": "github.com/kballard/go-shellquote",
+			"Rev": "d8ec1a69a250a17bb0e419c386eac1f3711dc142"
+		}
+	]
+}
