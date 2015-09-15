@@ -26,24 +26,24 @@ Additionally, ccron requires a PostgreSQL server for persistence and a Redis ser
 
 You'll need to fill in your postgres and redis details where appropriate.
 
-   # create a database for ccron to use
-   $ psql << EOF
-   CREATE DATABASE ccron;
-   CREATE ROLE ccron WITH LOGIN PASSWORD 'ccron';
-   GRANT ALL ON DATABASE ccron to ccron;
-   EOF
+    # create a database for ccron to use
+    $ psql << EOF
+    CREATE DATABASE ccron;
+    CREATE ROLE ccron WITH LOGIN PASSWORD 'ccron';
+    GRANT ALL ON DATABASE ccron to ccron;
+    EOF
 
-   # run the API server
-   $ docker run -d -n ccron-api -e POSTGRES_URL="postgres://ccron:ccron@172.17.42.1/ccron" -e REDIS_URL="redis://x:pass@172.17.42.1" -p 5000:5000 goodeggs/ccron-api
+    # run the API server
+    $ docker run -d -n ccron-api -e POSTGRES_URL="postgres://ccron:ccron@172.17.42.1/ccron" -e REDIS_URL="redis://x:pass@172.17.42.1" -p 5000:5000 goodeggs/ccron-api
 
-   # run as many ccrond containers as it takes for you to sleep at night
-   $ for i in 1 2; do docker run -d -n ccrond$i -e CCRON_SERVER="http://172.17.42.1:5000" goodeggs/ccrond; done
+    # run as many ccrond containers as it takes for you to sleep at night
+    $ for i in 1 2; do docker run -d -n ccrond$i -e CCRON_SERVER="http://172.17.42.1:5000" goodeggs/ccrond; done
 
-   # download ccron
-   $ export CCRON_SERVER="http://172.17.42.1:5000"
-   $ ccron create "* * * * * echo hello world"
-   Id	Schedule	Command
-   1  * * * * * echo hello world
+    # download ccron
+    $ export CCRON_SERVER="http://172.17.42.1:5000"
+    $ ccron create "* * * * * echo hello world"
+    Id	Schedule	Command
+    1  * * * * * echo hello world
 
 # TODOs
 
